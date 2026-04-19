@@ -6,6 +6,7 @@ using namespace std;
 
 int main(){
     /*
+    
     // distance of cooordinate
     float xA, yA, xB, yB, d;
     cout<<"Input enter xA:\n";
@@ -21,6 +22,7 @@ int main(){
     cout<<d;
     cout<<"\n";
     */
+    
 
 
 /*
@@ -38,12 +40,12 @@ int main(){
     cin>>R;
     d1 = sqrt(pow(xM-xC,2) + pow(yM-yC, 2));
 
-    if ((d1 < R) || ((R-d1)>0)){
+    if (((d1 < R))){
         cout<<"coordinate of M lying inside the cirle\n";
         cout<<"R is: "<<R;
         cout<<"d1 is: "<<d1;
     }
-    else if ((d1 > R) || ((R-d1)<0)){
+    else if (((d1 > R))){
         cout<<"coordinate of M lying outside the circle\n";
         cout<<"R is: "<<R;
         cout<<"d1 is: "<<d1;
@@ -54,6 +56,7 @@ int main(){
         cout<<"d1 is: "<<d1;
     }
         */
+        
 /*
     //Integer pair
     int num1, num2, sum1 =0, sum2=0;
@@ -86,9 +89,9 @@ int main(){
         cout<<"No\n";
     }
         */
-
-    //Exam day, month, year
 /*
+    //Exam day, month, year
+
     int day, month, year, dayofweek =0, a=0, y= 0,m=0;
     string places[7] = {"Sunday", "Monday", "Tuesday", "Webnesday", "Thursday","Friday","Saturday"};
     cout<<"Input enter day:\n";
@@ -97,11 +100,11 @@ int main(){
     cin>>month;
     cout<<"Input enter year:\n";
     cin>>year;
-    if (month > 12 and month ==0) return;
-    if (day > 33 and day ==0) return;
+    if (month > 12 || month == 0) return 0;
+    if (day > 31 || day == 0) return 0;
     if (year == 0) return;
 
-    if (((year % 4 ==0) and (year % 100==0)) || (year % 400 ==0)){
+    if (((year % 4 ==0) and (year % 100 !=0)) || (year % 400 ==0)){
         cout<<"Is leap year\n";
         cout<<year;
         cout<<"\n";
@@ -113,14 +116,15 @@ int main(){
     y = year - a;
     m = month + 12*a -2;
     dayofweek = (day + y + y /4 - y /100 + y /400 + (31 * m)/12) %7;
-    for (int i =dayofweek; ; ){
-        cout<<places[i];
-        break;
-    }
+    places[dayofweek];
     */
 
+   
+
     //calculate the time used
-    int h1 =0, h2=0, m1=0, m2=0, s1=0, s2=0, used_time_h=0, used_time_m=0, used_time_s=0;
+    int h1 = 0, m1 = 0, s1 = 0, h2 = 0, m2 =0, s2 =0;
+    int used_time_h = 0, used_time_m =0, used_time_s =0;
+
     cout<<"Input time hour one:\n";
     cin>>h1;
     cout<<"Input time minute one:\n";
@@ -133,24 +137,30 @@ int main(){
     cin>>m2;
     cout<<"Input time second two:\n";
     cin>>s2;
-    if ( h1 > h2 ){
+    int t1 = h1 * 3600 + m1 * 60 + s1;
+    int t2 = h2 * 3600 + m2 * 60 + s2;
+    if ( h1 >=24 || h2>=24 ){
         cout<<"You enter again";
         return 0;
     }
-    used_time_h = h2 - h1;
-    if (m1 > 60 and m2 > 60){
+    
+    if (m1 >= 60 || m2 >= 60){
         cout<<"does not exist";
         return 0;
     }
-    used_time_m = abs(m2 - m1);
-    if (s1 > 60 and s2 > 60){
+    
+    if (s1 >= 60 || s2 >= 60){
         cout<<"does not exist";
         return 0;
     }
-    used_time_s = abs(s2 - s1);
-    cout<<"Hour used: "<<used_time_h <<" Minute used: "<<used_time_m<<" Second used: "<<used_time_s<<"\n";
-
-
+    int used_time = t2 - t1;
+    used_time_h = used_time / 3600;
+    used_time %= 3600;
+    used_time_m = used_time / 60;
+    used_time_s = used_time % 60;
+    cout<< "Hour used: "<<used_time_h << "Minute used: "<< used_time_m<< "Second used: "<< used_time_s << "\n";
+    
+    
 
 
     
